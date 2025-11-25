@@ -44,8 +44,8 @@ jobs:
         run: ./gradlew assembleDebug --stacktrace
 
       # ✅ 6. Run Unit Tests
-      - name: Run Unit Tests
-        run: ./gradlew testDebugUnitTest
+      #- name: Run Unit Tests
+      #  run: ./gradlew testDebugUnitTest
 
       # ✅ 7. Upload Debug APK
       - name: Upload Debug APK

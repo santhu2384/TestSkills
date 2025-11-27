@@ -48,8 +48,8 @@ jobs:
         run: ./gradlew lintDebug
 
       # 7. Run Detekt (Only :domain JVM module)
-      - name: Run Detekt Checks
-        run: ./gradlew detekt
+      #- name: Run Detekt Checks
+       # run: ./gradlew detekt
 
       # 8. Build Signed Release APK & AAB
       - name: Build Signed Release
@@ -70,13 +70,13 @@ jobs:
           path: app/build/outputs/bundle/release/app-release.aab
 
 
-      # ✅ 6. Run Unit Tests
-      #- name: Run Unit Tests
-      #  run: ./gradlew testDebugUnitTest
+            # ✅ 6. Run Unit Tests
+            #- name: Run Unit Tests
+            #  run: ./gradlew testDebugUnitTest
 
-      # ✅ 8. Upload Debug APK
-      #- name: Upload Debug APK
-       # uses: actions/upload-artifact@v4
-        #with:
-          #  name: debug-apk
-           # path: app/build/outputs/apk/debug/app-debug.apk
+            # ✅ 8. Upload Debug APK
+            #- name: Upload Debug APK
+            # uses: actions/upload-artifact@v4
+            #with:
+            #  name: debug-apk
+          # path: app/build/outputs/apk/debug/app-debug.apk

@@ -1,24 +1,29 @@
-name: Detekt Code Quality
+build:
+  maxIssues: 0
 
-on:
-  pull_request:
-  push:
-    branches:
-      - main
+config:
+  validation: true
 
-jobs:
-  detekt:
-    runs-on: ubuntu-latest
+processors:
+  active: true
 
-    steps:
-      - name: Checkout Code
-        uses: actions/checkout@v4
+rules:
+  comments:
+    UndocumentedPublicFunction:
+      active: false
 
-      - name: Set up JDK
-        uses: actions/setup-java@v4
-        with:
-          java-version: 17
-          distribution: temurin
+  complexity:
+    LongMethod:
+      active: true
+      threshold: 40
 
-      - name: Run Detekt
-        run: ./gradlew detekt --continue
+  style:
+    MagicNumber:
+      active: false
+    WildcardImport:
+      active: false
+
+  naming:
+    FunctionNaming:
+      active: true
+      functionPattern: '[a-z][A-Za-z0-9]*'

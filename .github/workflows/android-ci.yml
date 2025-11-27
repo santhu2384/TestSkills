@@ -43,6 +43,10 @@ jobs:
       - name: Build Project
         run: ./gradlew assembleDebug --stacktrace
 
+      # ✅ 6. Run Android Lint
+      - name: Run Android Lint
+        run: ./gradlew lintDebug
+
       # ✅ 6. Run Unit Tests
       #- name: Run Unit Tests
       #  run: ./gradlew testDebugUnitTest

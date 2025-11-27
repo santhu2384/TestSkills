@@ -67,8 +67,6 @@ android {
     composeOptions {
         kotlinCompilerExtensionVersion = "1.5.8"
     }
-
-
 }
 
 configurations.all {
@@ -97,3 +95,4 @@ dependencies {
     implementation("androidx.navigation:navigation-compose:2.7.2") // if not in catalog
 
 }
+

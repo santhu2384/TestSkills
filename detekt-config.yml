@@ -1,0 +1,24 @@
+name: Detekt Code Quality
+
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+
+jobs:
+  detekt:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Set up JDK
+        uses: actions/setup-java@v4
+        with:
+          java-version: 17
+          distribution: temurin
+
+      - name: Run Detekt
+        run: ./gradlew detekt --continue

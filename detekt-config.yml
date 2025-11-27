@@ -1,5 +1,3 @@
-detekt:
-
   build:
     maxIssues: 0
 

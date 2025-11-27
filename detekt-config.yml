@@ -1,29 +1,32 @@
-build:
-  maxIssues: 0
+detekt:
 
-config:
-  validation: true
+  build:
+    maxIssues: 0
 
-processors:
-  active: true
+  config:
+    validation: true
 
-rules:
-  comments:
-    UndocumentedPublicFunction:
-      active: false
+  processors:
+    active: true
 
-  complexity:
-    LongMethod:
-      active: true
-      threshold: 40
+  rules:
 
-  style:
-    MagicNumber:
-      active: false
-    WildcardImport:
-      active: false
+    comments:
+      UndocumentedPublicFunction:
+        active: false
 
-  naming:
-    FunctionNaming:
-      active: true
-      functionPattern: '[a-z][A-Za-z0-9]*'
+    complexity:
+      LongMethod:
+        active: true
+        threshold: 40
+
+    style:
+      MagicNumber:
+        active: false
+      WildcardImport:
+        active: false
+
+    naming:
+      FunctionNaming:
+        active: true
+        functionPattern: '[a-z][A-Za-z0-9]*'

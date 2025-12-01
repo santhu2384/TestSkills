@@ -1,5 +1,6 @@
 package com.example.testskills.presentation
 
+import android.app.Activity
 import com.example.feature_home.HomeScreen
 import android.os.Bundle
 import androidx.activity.ComponentActivity
@@ -14,6 +15,7 @@ class DaznMainActivity : ComponentActivity()
 {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        //LeakySingleton.leakedActivity = this
         setContent {
             //HomeScreen()
             AppTheme {
@@ -23,3 +25,7 @@ class DaznMainActivity : ComponentActivity()
         }
     }
 }
+
+/*object LeakySingleton {
+    var leakedActivity: Activity? = null
+}*/

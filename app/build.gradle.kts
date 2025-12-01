@@ -6,8 +6,27 @@ plugins {
 }
 
 android {
+
     namespace = "com.example.testskills"
     compileSdk = 34 // Downgraded to avoid warnings
+
+    signingConfigs {
+        create("release") {
+            storeFile = file("keystore.jks") // created from CI
+            storePassword = System.getenv("KEYSTORE_PASSWORD")
+            keyAlias = System.getenv("KEY_ALIAS")
+            keyPassword = System.getenv("KEY_PASSWORD")
+        }
+    }
+
+    buildTypes {
+        getByName("release") {
+            isMinifyEnabled = false
+            signingConfig = signingConfigs.getByName("release")
+        }
+    }
+
+
 
     defaultConfig {
         applicationId = "com.example.testskills"
@@ -22,7 +41,7 @@ android {
         }
     }
 
-    buildTypes {
+    /*buildTypes {
         release {
             isMinifyEnabled = false
             proguardFiles(
@@ -30,7 +49,7 @@ android {
                 "proguard-rules.pro"
             )
         }
-    }
+    }*/
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_1_8
         targetCompatibility = JavaVersion.VERSION_1_8
@@ -93,6 +112,9 @@ dependencies {
 
     implementation("androidx.hilt:hilt-navigation-compose:1.0.0")
     implementation("androidx.navigation:navigation-compose:2.7.2") // if not in catalog
+
+    //leak Canary to detect leaks
+    debugImplementation("com.squareup.leakcanary:leakcanary-android:2.14")
 
 }
 

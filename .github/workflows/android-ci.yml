@@ -40,20 +40,35 @@ jobs:
         run: chmod +x gradlew
 
       # ✅ 5. Run Build
-      - name: Build Project
-        run: ./gradlew assembleDebug --stacktrace
+      #- name: Build Project
+       # run: ./gradlew assembleDebug --stacktrace
 
-      # ✅ 6. Run Android Lint
+      # ✅ 5. Run Android Lint
       - name: Run Android Lint
         run: ./gradlew lintDebug
+
+      # 6. Decode keystore into app/ folder (CRITICAL)
+      - name: Decode Keystore File
+        run: |
+           echo "$KEYSTORE_BASE64" | base64 --decode > app/keystore.jks
+        env:
+          KEYSTORE_BASE64: ${{ secrets.KEYSTORE_BASE64 }}
 
       # 7. Run Detekt (Only :domain JVM module)
       #- name: Run Detekt Checks
       # run: ./gradlew detekt
 
+      # 7. Verify keystore exists
+      - name: Verify keystore file
+        run: ls -l app/
+
       # 8. Build Signed Release APK & AAB
-      - name: Build Signed Release APK & AAB
-        run: ./gradlew assembleRelease bundleRelease -stacktrace
+      - name: Build Signed Release
+        env:
+          KEYSTORE_PASSWORD: ${{ secrets.KEYSTORE_PASSWORD }}
+          KEY_ALIAS: ${{ secrets.KEY_ALIAS }}
+          KEY_PASSWORD: ${{ secrets.KEY_PASSWORD }}
+        run: ./gradlew assembleRelease bundleRelease --stacktrace
 
       # 9. Show output structure (IMPORTANT)
       - name: List Build Outputs

@@ -24,9 +24,11 @@ class PlayerViewModel @Inject constructor(private val repo:HomeRepository,
     val _uistate = MutableStateFlow(PlayerUiModel())
     val uistate:StateFlow<PlayerUiModel> = _uistate
 
+    //creating playermanger from viem model to survie config changes
     val playerManager:PlayerManager = PlayerManager(context)
     val player get() = playerManager.player
 
+    //to retain position from where it stopped
     var savedPosition : Long = 0L
     var savedWhenReady : Boolean = true
     var videoId:String = ""

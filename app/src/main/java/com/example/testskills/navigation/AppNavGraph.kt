@@ -10,6 +10,7 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
 import com.example.feature_home.HomeScreen
+import com.example.feature_home.HomeScreenRoot
 import com.example.feature_player.PlayerScreen
 
 object Routes {
@@ -25,7 +26,7 @@ fun AppNavGraph(navController: NavHostController = rememberNavController())
     {
         composable(Routes.HOME)
         {
-            HomeScreen(OnClickVideo = {
+            HomeScreenRoot(OnClickVideo = {
                 videoid -> navController.navigate("player/$videoid")
             })
         }

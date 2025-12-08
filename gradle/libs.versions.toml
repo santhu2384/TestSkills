@@ -5,6 +5,10 @@
 [versions]
 kotlin = "1.9.22"
 agp = "8.2.2"
+mockk = "1.14.4"
+truth = "1.1.3"
+turbine = "0.12.3"
+mockwebserver = "4.11.0"
 
 compose-bom = "2023.10.01"
 compose-compiler = "1.5.8"
@@ -12,7 +16,7 @@ compose-compiler = "1.5.8"
 hilt = "2.51.1"
 
 lifecycle = "2.7.0"
-coroutines = "1.7.3"
+coroutines = "1.8.1"
 
 navigation = "2.7.2"
 
@@ -30,6 +34,9 @@ androidx-test-ext = "1.1.5"
 espresso = "3.5.1"
 ui-graphics-android = "1.5.4"
 material3-android = "1.1.2"
+core-ktx = "1.17.0"
+appcompat = "1.7.1"
+material = "1.13.0"
 
 #############################################
 #               PLUGINS
@@ -94,7 +101,14 @@ room-compiler = { group = "androidx.room", name = "room-compiler", version.ref =
 #############################################
 
 junit = { group = "junit", name = "junit", version.ref = "junit" }
+mockk = { group = "io.mockk", name = "mockk", version.ref = "mockk" }
+truth = { group = "com.google.truth", name = "truth", version.ref = "truth" }
+turbine = { group = "app.cash.turbine", name = "turbine", version.ref = "turbine" }
+mockwebserver = { group = "com.squareup.okhttp3", name = "mockwebserver", version.ref = "mockwebserver" }
 espresso = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "espresso" }
 androidx-test-ext = { group = "androidx.test.ext", name = "junit", version.ref = "androidx-test-ext" }
 androidx-ui-graphics-android = { group = "androidx.compose.ui", name = "ui-graphics-android", version.ref = "ui-graphics-android" }
 androidx-material3-android = { group = "androidx.compose.material3", name = "material3-android", version.ref = "material3-android" }
+androidx-core-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "core-ktx" }
+appcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "appcompat" }
+material = { group = "com.google.android.material", name = "material", version.ref = "material" }

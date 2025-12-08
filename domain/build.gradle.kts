@@ -20,7 +20,15 @@ dependencies {
     // Only pure Kotlin allowed here
     implementation(kotlin("stdlib"))
 
+
     // Optional for coroutines
     api("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.8.0")
     implementation("javax.inject:javax.inject:1")
+
+    // Unit test
+    testImplementation("junit:junit:4.13.2")
+    testImplementation("io.mockk:mockk:1.13.12")
+    testImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:1.8.1")
+    testImplementation(project(":core:testing"))
+
 }

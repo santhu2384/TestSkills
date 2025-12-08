@@ -1,4 +1,4 @@
-package com.example.feature_player
+package com.example.testing
 
 import org.junit.Test
 

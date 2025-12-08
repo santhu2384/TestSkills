@@ -21,10 +21,10 @@ import com.example.domain.model.common.Result
 import kotlinx.coroutines.flow.update
 
 @HiltViewModel
-class HomeViewModel @Inject constructor(private val repo:HomeRepository,private val getLiveMatchesUsecase: GetLiveMatchesUsecase) :ViewModel()
+open class HomeViewModel @Inject constructor(private val repo:HomeRepository, private val getLiveMatchesUsecase: GetLiveMatchesUsecase) :ViewModel(),IHomeViewModel
 {
     private val _matches = MutableStateFlow(HomeUiState())
-    var matches:StateFlow<HomeUiState> = _matches
+    override var matches:StateFlow<HomeUiState> = _matches
     init {
         loadHomeSections()
     }

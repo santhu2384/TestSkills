@@ -22,7 +22,15 @@ import com.example.ui.components.SectionWithCarousel
 import com.example.ui.mappers.toUiModel
 
 @Composable
-fun HomeScreen(vm: HomeViewModel = hiltViewModel(),OnClickVideo: (String) -> Unit)
+fun HomeScreenRoot(OnClickVideo: (String) -> Unit)
+{
+    val vm: HomeViewModel = hiltViewModel()
+    HomeScreen(vm,OnClickVideo)
+}
+
+@Composable
+//fun HomeScreen(vm: HomeViewModel = hiltViewModel(),OnClickVideo: (String) -> Unit)
+fun HomeScreen(vm: IHomeViewModel,OnClickVideo: (String) -> Unit)
 {
     val matches = vm.matches.value
     when

@@ -4,7 +4,6 @@ import android.content.Context
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.domain.model.Video
-import com.example.ui.mappers.toUiModel
 import com.example.ui.models.VideoUiModel
 import dagger.hilt.android.lifecycle.HiltViewModel
 import dagger.hilt.android.qualifiers.ActivityContext
@@ -19,13 +18,13 @@ data class PlayerUiModel(val video: Video?=null)
 
 @HiltViewModel
 class PlayerViewModel @Inject constructor(private val repo:HomeRepository,
-    @ApplicationContext context: Context):ViewModel()
+                                          @ApplicationContext context:Context):ViewModel()
 {
     val _uistate = MutableStateFlow(PlayerUiModel())
     val uistate:StateFlow<PlayerUiModel> = _uistate
 
     //creating playermanger from viem model to survie config changes
-    val playerManager:PlayerManager = PlayerManager(context)
+    var playerManager:PlayerManager = PlayerManager(context)
     val player get() = playerManager.player
 
     //to retain position from where it stopped
@@ -67,12 +66,18 @@ class PlayerViewModel @Inject constructor(private val repo:HomeRepository,
     fun loadVideo()
     {
         viewModelScope.launch {
-            val video = repo.findVideoById(videoId)
-            _uistate.value = PlayerUiModel(video)
+            try {
+
+                val video = repo.findVideoById(videoId)
+                _uistate.value = PlayerUiModel(video)
+            }catch (e:Exception)
+            {
+                _uistate.value = PlayerUiModel(null)
+            }
         }
     }
 
-    override fun onCleared() {
+     override fun onCleared() {
         super.onCleared()
         playerManager.release()
     }
